@@ -2,24 +2,24 @@ import React from "react"
 import { graphql } from "gatsby"
 import get from 'lodash/get'
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import About from "../sections/about"
+import Mission from "../sections/mission"
+import Experience from "../sections/experience"
+import Projects from "../sections/projects"
 
 class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const author = get(this, 'props.data.allContentfulPerson.edges')
-
+    const person = get(this, 'props.data.allContentfulPerson.edges')
 
   return (
     <Layout>
       <SEO title={siteTitle} keywords={[`Adelola`, `Adelola Adekunle`, `Adekunle`]} />
-      <h1>Hi people</h1>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
-      <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-        <Image />
-      </div>
+      <About />
+      <Mission />
+      <Experience />
+      <Projects />
     </Layout>
     )
   }
