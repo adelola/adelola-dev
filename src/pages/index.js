@@ -2,11 +2,14 @@ import React from "react"
 import { graphql } from "gatsby"
 import get from 'lodash/get'
 import Layout from "../components/layout"
+import Header from "../components/header"
 import SEO from "../components/seo"
 import About from "../sections/about"
 import Mission from "../sections/mission"
 import Experience from "../sections/experience"
 import Projects from "../sections/projects"
+import Footer from "../components/footer"
+
 
 class RootIndex extends React.Component {
   render() {
@@ -16,10 +19,12 @@ class RootIndex extends React.Component {
   return (
     <Layout>
       <SEO title={siteTitle} keywords={[`Adelola`, `Adelola Adekunle`, `Adekunle`]} />
+      <Header />
       <About />
       <Mission />
       <Experience />
       <Projects />
+      <Footer />
     </Layout>
     )
   }

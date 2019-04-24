@@ -1,11 +1,14 @@
 import React from "react"
+import Section from "../components/section"
 
 class Projects extends React.Component {
     render() {
 
   
     return (
-     <p>Projects</p>
+    <Section> 
+      <p>Projects</p>
+    </Section> 
       )
     }
   }

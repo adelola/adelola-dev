@@ -1,11 +1,14 @@
 import React from "react"
+import Section from "../components/section"
 
 class About extends React.Component {
     render() {
 
   
     return (
-     <p>About</p>
+    <Section>  
+      <p>About</p>
+    </Section>
       )
     }
   }

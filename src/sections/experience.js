@@ -1,11 +1,14 @@
 import React from "react"
+import Section from "../components/section"
 
 class Experience extends React.Component {
     render() {
 
   
     return (
-     <p>Experience</p>
+    <Section> 
+      <p>Experience</p>
+    </Section> 
       )
     }
   }
