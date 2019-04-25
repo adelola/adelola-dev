@@ -6,7 +6,7 @@ class Experience extends React.Component {
 
   
     return (
-    <Section> 
+    <Section id="experience"> 
       <p>Experience</p>
     </Section> 
       )

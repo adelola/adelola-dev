@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import get from 'lodash/get'
 import Layout from "../components/layout"
-import Header from "../components/header"
+import Nav from "../components/nav"
 import SEO from "../components/seo"
 import About from "../sections/about"
 import Mission from "../sections/mission"
@@ -19,7 +19,7 @@ class RootIndex extends React.Component {
   return (
     <Layout>
       <SEO title={siteTitle} keywords={[`Adelola`, `Adelola Adekunle`, `Adekunle`]} />
-      <Header />
+      <Nav />
       <About />
       <Mission />
       <Experience />

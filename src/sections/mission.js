@@ -6,7 +6,7 @@ class Mission extends React.Component {
 
   
     return (
-    <Section> 
+    <Section id="mission">  
       <p>Mission</p>
      </Section> 
       )

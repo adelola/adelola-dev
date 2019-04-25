@@ -6,7 +6,7 @@ class Projects extends React.Component {
 
   
     return (
-    <Section> 
+    <Section id="projects"> 
       <p>Projects</p>
     </Section> 
       )

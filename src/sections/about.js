@@ -6,7 +6,7 @@ class About extends React.Component {
 
   
     return (
-    <Section>  
+    <Section id="about">  
       <p>About</p>
     </Section>
       )

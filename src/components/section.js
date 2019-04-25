@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const Section = styled.div`
@@ -12,6 +11,5 @@ const Section = styled.div`
   justify-content: center;
   scroll-behavior: smooth;
 `;
-
 
 export default Section
