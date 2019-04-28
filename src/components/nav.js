@@ -1,5 +1,6 @@
 import React from "react"
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+import Headroom from 'react-headroom'
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "styled-components"
@@ -141,27 +142,29 @@ class Nav extends React.Component{
                             { url: "#mission", name:"Mission"}, 
                             { url: "#projects", name:"Projects"} ]
     return (
-      <Navbar>
-        <div className="logo">
-          <Link to="/">
-            Logo
-          </Link>
-        </div>
-        <nav className="nav">
-          <i  
-            className="fa fa-bars"
-            aria-hidden="true"
-            onClick={e => this.handleToggle(e)}
-          />
-          <ul className={`collapsed ${isExpanded ? "is-expanded" : ""}`}>
-            { anchorLinks.map(({ url, name }, i) => (
-              <li key={i}>
-                <AnchorLink href={url} onClick= {e => this.handleToggle(e)}>{name}</AnchorLink>
-              </li>
-              ))}
-          </ul>
-        </nav>
-      </Navbar>
+      <Headroom>
+        <Navbar>
+          <div className="logo">
+            <Link to="/">
+              Logo
+            </Link>
+          </div>
+          <nav className="nav">
+            <i  
+              className="fa fa-bars"
+              aria-hidden="true"
+              onClick={e => this.handleToggle(e)}
+            />
+            <ul className={`collapsed ${isExpanded ? "is-expanded" : ""}`}>
+              { anchorLinks.map(({ url, name }, i) => (
+                <li key={i}>
+                  <AnchorLink href={url} onClick= {e => this.handleToggle(e)}>{name}</AnchorLink>
+                </li>
+                ))}
+            </ul>
+          </nav>
+        </Navbar>
+      </Headroom>
     )
   }
 }
