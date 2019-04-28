@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
-const Navigation = styled.header`
+const Navbar = styled.header`
   width: 100%;
   z-index: 3;
   display: flex;
@@ -85,7 +85,6 @@ const Navigation = styled.header`
       flex-direction: column;
       justify-content: space-between;
       flex-wrap: wrap;
-
       overflow: hidden;
       max-height: 0;
       -moz-transition-duration: 0.4s;
@@ -134,10 +133,15 @@ class Nav extends React.Component{
   }
 
   render(){
+
+    const { isExpanded } = this.state;
       // const { anchorLinks } = this.props
-      const anchorLinks = [{ url: "#about", name:"About"}, { url: "#experience", name:"Experience"}, { url: "#mission", name:"Mission"}, { url: "#projects", name:"Projects"} ]
+      const anchorLinks = [{ url: "#about", name:"About"}, 
+                            { url: "#experience", name:"Experience"}, 
+                            { url: "#mission", name:"Mission"}, 
+                            { url: "#projects", name:"Projects"} ]
     return (
-      <Navigation>
+      <Navbar>
         <div className="logo">
           <Link to="/">
             Logo
@@ -149,27 +153,18 @@ class Nav extends React.Component{
             aria-hidden="true"
             onClick={e => this.handleToggle(e)}
           />
-          <ul className={`collapsed ${this.props.isExpanded ? "is-expanded" : ""}`}>
+          <ul className={`collapsed ${isExpanded ? "is-expanded" : ""}`}>
             { anchorLinks.map(({ url, name }, i) => (
               <li key={i}>
-                <AnchorLink href={url}>{name}</AnchorLink>
+                <AnchorLink href={url} onClick= {e => this.handleToggle(e)}>{name}</AnchorLink>
               </li>
               ))}
           </ul>
         </nav>
-      </Navigation>
+      </Navbar>
     )
   }
 }
-
-
-
-
-
-
-
-
-
 
 
 // Nav.propTypes = {
