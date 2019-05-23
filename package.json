@@ -1,10 +1,13 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "adelola-dev-site",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "Dev portfolio site",
+  "version": "1.0",
+  "author": "Lola Adekunle",
   "dependencies": {
+    "@contentful/gatsby-transformer-contentful-richtext": "^13.1.0",
+    "@contentful/rich-text-html-renderer": "^13.1.0",
+    "@contentful/rich-text-react-renderer": "^13.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
     "@fortawesome/free-brands-svg-icons": "^5.8.2",
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
@@ -46,9 +49,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/adelola/adelola-dev/"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/adelola/adelola-dev/issues"
   }
 }

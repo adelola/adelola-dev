@@ -32,6 +32,8 @@ module.exports = {
     //     }
     //   }
     // },
+    `@contentful/gatsby-transformer-contentful-richtext`,
+    
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
