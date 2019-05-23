@@ -11,9 +11,9 @@ class About extends React.Component {
     render() {
 
     return (
-    <Section id="aboutSection">  
+    <Section id="about">  
       <div dangerouslySetInnerHTML={{  __html: this.props.intro, }}></div>
-      <div class="social_links"> 
+      <div className="social_links"> 
         <ul>
           <li><a href= {this.props.socials.codePen}><FontAwesomeIcon icon={faCodepen} /></a></li>
           <li><a href= {this.props.socials.github}><FontAwesomeIcon icon={faGithub} /></a></li>

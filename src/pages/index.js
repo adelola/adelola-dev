@@ -7,14 +7,15 @@ import SEO from "../components/seo"
 import About from "../sections/about"
 import Experience from "../sections/experience"
 import Projects from "../sections/projects"
-import Mission from "../sections/mission"
 import Footer from "../components/footer"
+
 
 
 class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const person = get(this, 'props.data.allContentfulPerson.edges[0].node')
+    const projects =  get(this, 'props.data.allContentfulProject.edges')
     const social_links = {codePen: person.codePen, github: person.github, linkedin: person.linkedin, twitter: person.twitter }
 
   return (
@@ -23,14 +24,15 @@ class RootIndex extends React.Component {
       <Nav />
       <About intro={person.briefIntro.childMarkdownRemark.html} socials= {social_links}/>
       <Experience />
-      <Projects />
-      <Mission />
+      <Projects projects= {projects} />
       <Footer />
     </Layout>
     )
   }
 }
 export default RootIndex
+
+
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -49,20 +51,41 @@ export const pageQuery = graphql`
               html
             }
           }
-          shortBio {
-            childMarkdownRemark{
-              html
-            }
-          }
           email
-          dribbble
           codePen
-          instagram
           github
           linkedin
           twitter
         }
       }
     }
+    allContentfulProject {
+      edges {
+        node {
+          name
+          heroImage  {
+            fluid(
+              maxWidth: 300
+              quality: 100
+              background: "rgb:000000"
+            ){
+              ...GatsbyContentfulFluid
+
+            }
+          }
+          projectUrl
+          rating
+          repositoryUrl
+          slug
+          summary {
+            childMarkdownRemark{
+              html
+            }
+          }
+          tools
+        }
+      }
+	  }
+
   }
 `

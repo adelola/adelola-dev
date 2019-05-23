@@ -139,7 +139,6 @@ class Nav extends React.Component{
       // const { anchorLinks } = this.props
       const anchorLinks = [{ url: "#about", name:"About"}, 
                             { url: "#experience", name:"Experience"}, 
-                            { url: "#mission", name:"Mission"}, 
                             { url: "#projects", name:"Projects"} ]
     return (
       <Headroom>
