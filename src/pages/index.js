@@ -8,6 +8,7 @@ import About from "../sections/about"
 import Experience from "../sections/experience"
 import Projects from "../sections/projects"
 import Footer from "../components/footer"
+import PageTransition from 'gatsby-plugin-page-transitions'
 
 
 
@@ -19,14 +20,16 @@ class RootIndex extends React.Component {
     const social_links = {codePen: person.codePen, github: person.github, linkedin: person.linkedin, twitter: person.twitter }
 
   return (
-    <Layout>
-      <SEO title={siteTitle} keywords={[`Adelola`, `Adelola Adekunle`, `Adekunle`]} />
-      <Nav />
-      <About intro={person.briefIntro.childMarkdownRemark.html} socials= {social_links}/>
-      <Experience />
-      <Projects projects= {projects} />
-      <Footer />
-    </Layout>
+    // <PageTransition> 
+      <Layout>
+        <SEO title={siteTitle} keywords={[`Adelola`, `Adelola Adekunle`, `Adekunle`]} />
+        <Nav />
+        <About intro={person.briefIntro.childMarkdownRemark.html} socials= {social_links}/>
+        <Experience />
+        <Projects projects= {projects} />
+        <Footer />
+      </Layout>
+    // </PageTransition>  
     )
   }
 }

@@ -12,8 +12,10 @@ module.exports = {
     author: config.name
   },
   plugins: [
+    
     `gatsby-plugin-react-helmet`,
-    'gatsby-transformer-remark',
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-transition-link`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -23,7 +25,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    'gatsby-plugin-styled-components',
+    `gatsby-plugin-styled-components`,
     // {
     //   resolve: 'gatsby-plugin-web-font-loader',
     //   options: {
@@ -47,7 +49,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-contentful',
+      resolve: `gatsby-source-contentful`,
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
