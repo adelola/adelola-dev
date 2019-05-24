@@ -162,6 +162,7 @@ class Nav extends React.Component{
                 ))}
             </ul>
           </nav>
+          <a  href="/resume.pdf" target="_blank" rel="nofollow noopener noreferrer"> <strong>Resume</strong> </a>
         </Navbar>
       </Headroom>
     )
