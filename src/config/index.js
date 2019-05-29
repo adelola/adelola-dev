@@ -1,11 +1,14 @@
 
 module.exports = {
     name: 'Adelola Adekunle',
-    siteTitle: 'Adelola Adekunle',
+    siteTitle: 'Development Portfolio',
     siteDescription:
-      'Web development portfolio of Adelola Adekunle',
+      'Adelola\'s Web development portfolio, a constant work in progress',
     siteKeywords:
       'Adelola Adekunle, Adelola, Adekunle, adelola, lola adekunle, lola a, software engineer, front-end engineer, web developer',
     siteUrl: 'https://adelola.dev',
     siteLanguage: 'en_US',
+    background_color: '#E94F37',
+    theme_color: '#E94F37',
+
   };

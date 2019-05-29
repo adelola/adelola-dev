@@ -25,7 +25,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-emotion`,
     // {
     //   resolve: 'gatsby-plugin-web-font-loader',
     //   options: {
@@ -35,15 +35,14 @@ module.exports = {
     //   }
     // },
     `@contentful/gatsby-transformer-contentful-richtext`,
-    
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Adelola`,
+        short_name: `adelola`,
         start_url: `/`,
-        background_color: `#E94F37`,
-        theme_color: `#E94F37`,
+        background_color: config.background_color,
+        theme_color: config.theme_color,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },

@@ -3,7 +3,8 @@ import AnchorLink from 'react-anchor-link-smooth-scroll'
 import Headroom from 'react-headroom'
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import styled from "styled-components"
+import styled from "@emotion/styled"
+import { css } from "@emotion/core"
 
 const Navbar = styled.header`
   width: 100%;
@@ -136,10 +137,9 @@ class Nav extends React.Component{
   render(){
 
     const { isExpanded } = this.state;
-      // const { anchorLinks } = this.props
-      const anchorLinks = [{ url: "#about", name:"About"}, 
-                            { url: "#experience", name:"Experience"}, 
-                            { url: "#projects", name:"Projects"} ]
+    const anchorLinks = [{ url: "#about", name:"About"}, 
+                        { url: "#experience", name:"Experience"}, 
+                        { url: "#projects", name:"Projects"} ]
     return (
       <Headroom>
         <Navbar>
