@@ -26,15 +26,13 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-emotion`,
-    // {
-    //   resolve: 'gatsby-plugin-web-font-loader',
-    //   options: {
-    //     google: {
-    //       families: ['Cabin', 'Droid Sans', 'Droid Serif']
-    //     }
-    //   }
-    // },
     `@contentful/gatsby-transformer-contentful-richtext`,
+    {
+       resolve: `gatsby-plugin-typography`,
+       options: {
+         pathToConfigModule: `src/utils/typography`,
+        },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

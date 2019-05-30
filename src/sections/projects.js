@@ -1,8 +1,6 @@
 import React from "react"
 import Section from "../components/section"
-import Card from "../components/card"
-
- 
+import Card from "../components/card" 
 
 class Projects extends React.Component {
     render() {
