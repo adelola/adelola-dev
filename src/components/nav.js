@@ -4,39 +4,46 @@ import Headroom from 'react-headroom'
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "@emotion/styled"
-import { css } from "@emotion/core"
+// import { css } from "@emotion/core"
+import colors from "../styles/colors"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+
 
 const Navbar = styled.header`
   width: 100%;
   z-index: 3;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: right;
   padding: 0px 100px 0;
   height: 80px;
   margin-bottom: 60px;
-  background: #E2DADB;
+  background: ${colors.lightgray};
   
   a {
-    color: #222;
+    color: ${colors.darknavy};
     opacity: 1;
     transition: all 0.6s;
-    color: #222;
     font-size: 1em;
     text-decoration: none;
   }
   a:hover {
     opacity: .5;
   }
-  .fa-bars {
+  .hamburger {
     display: none;
-    color: #222;
+    color: ${colors.darknavy};
     font-size: 2rem;
   }
   nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      list-style: none;
     ul {
       display: flex;
-      justify-content: space-between;
       list-style: none;
     }
     li {
@@ -45,13 +52,19 @@ const Navbar = styled.header`
       font-size: 1em;
     }
     a {
+      color: ${colors.darknavy};
       font-size: 1em;
       text-decoration: none;
       .active {
         color: #222;
-      }
+      }  
     }
   }
+
+  #resume {
+      color: ${colors.orange};
+    }
+
   @media only screen and (max-width: 800px) {
     padding: 0px;
     .logo {
@@ -135,7 +148,6 @@ class Nav extends React.Component{
   }
 
   render(){
-
     const { isExpanded } = this.state;
     const anchorLinks = [{ url: "#about", name:"About"}, 
                         { url: "#experience", name:"Experience"}, 
@@ -149,20 +161,20 @@ class Nav extends React.Component{
             </Link>
           </div>
           <nav className="nav">
-            <i  
-              className="fa fa-bars"
-              aria-hidden="true"
-              onClick={e => this.handleToggle(e)}
-            />
+            
             <ul className={`collapsed ${isExpanded ? "is-expanded" : ""}`}>
               { anchorLinks.map(({ url, name }, i) => (
-                <li key={i}>
+                <li key={i}><strong>
                   <AnchorLink href={url} onClick= {e => this.handleToggle(e)}>{name}</AnchorLink>
-                </li>
+                  </strong></li>
                 ))}
+            <li><strong><a href="/resume.pdf" id="resume" target="_blank" rel="nofollow noopener noreferrer"> Resume </a></strong></li>
+
             </ul>
+            
+            <FontAwesomeIcon icon={ faBars } className="hamburger" aria-hidden="true" onClick={e => this.handleToggle(e)} />
+          
           </nav>
-          <a  href="/resume.pdf" target="_blank" rel="nofollow noopener noreferrer"> <strong>Resume</strong> </a>
         </Navbar>
       </Headroom>
     )
