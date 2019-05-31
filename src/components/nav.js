@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 
-const Navbar = styled.header`
+const Navstyle = styled.header`
   width: 100%;
   z-index: 3;
   display: flex;
@@ -154,7 +154,7 @@ class Nav extends React.Component{
                         { url: "#projects", name:"Projects"} ]
     return (
       <Headroom>
-        <Navbar>
+        <Navstyle>
           <div className="logo">
             <Link to="/">
               Logo
@@ -175,7 +175,7 @@ class Nav extends React.Component{
             <FontAwesomeIcon icon={ faBars } className="hamburger" aria-hidden="true" onClick={e => this.handleToggle(e)} />
           
           </nav>
-        </Navbar>
+        </Navstyle>
       </Headroom>
     )
   }

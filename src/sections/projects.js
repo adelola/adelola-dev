@@ -1,13 +1,33 @@
 import React from "react"
 import Section from "../components/section"
-import Card from "../components/card" 
+import Card from "../components/card"
+import styled from "@emotion/styled"
+import colors from "../styles/colors"
+
+const ProjectsStyle = styled.header`
+  background: ${colors.lightnavy};
+  max-width: 100vw;
+
+  ul{
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    align-items: flex-start;
+
+
+
+  }
+
+`;
+
 
 class Projects extends React.Component {
     render() {
       const projects = this.props.projects
 
     return (
-    <Section id="projects"> 
+    <ProjectsStyle id="projects"> 
       <h1> Projects </h1>
       <ul >
         {projects.map(({ node }) => {
@@ -18,7 +38,7 @@ class Projects extends React.Component {
           )})
         }
       </ul>
-    </Section> 
+    </ProjectsStyle> 
       )
     }
   }
