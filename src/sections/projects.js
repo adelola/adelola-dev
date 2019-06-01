@@ -4,8 +4,8 @@ import Card from "../components/card"
 import styled from "@emotion/styled"
 import colors from "../styles/colors"
 
-const ProjectsStyle = styled.header`
-  background: ${colors.lightnavy};
+const ProjectsStyle = styled.div`
+  background: ${colors.white};
   max-width: 100vw;
 
   ul{
@@ -14,9 +14,6 @@ const ProjectsStyle = styled.header`
     justify-content: flex-start;
     flex-flow: row wrap;
     align-items: flex-start;
-
-
-
   }
 
 `;

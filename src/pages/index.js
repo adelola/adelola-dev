@@ -63,6 +63,7 @@ export const pageQuery = graphql`
       edges {
         node {
           name
+          color
           heroImage  {
             fluid(
               maxWidth: 300
