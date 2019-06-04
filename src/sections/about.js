@@ -11,6 +11,7 @@ import colors from "../styles/colors"
 const AboutStyle = styled.div`
   min-height: 100vh;
   color: ${colors.navy};
+ 
 `;
 
 
