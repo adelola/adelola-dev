@@ -5,6 +5,15 @@ import get from 'lodash/get'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import styled from "@emotion/styled"
+import { jsx } from "@emotion/core"
+import colors from "../styles/colors"
+
+const ProjectPageStyle = styled.div`
+
+background-color: ${colors.darknavy};
+
+`
 
 class ProjectPageTemplate extends React.Component {
   render() {
@@ -16,6 +25,7 @@ class ProjectPageTemplate extends React.Component {
 
         <Layout location={this.props.location} title={siteTitle}>
           <SEO title={siteTitle}/>
+          <ProjectPageStyle>
               {/* Pagination Arrows */}
               <ul
             style={{
@@ -47,9 +57,8 @@ class ProjectPageTemplate extends React.Component {
           <Img alt="" fluid={project.heroImage.fluid} />
           <div dangerouslySetInnerHTML={{ __html: project.description.childContentfulRichText.html }} />
           
-      
+          </ProjectPageStyle>
         </Layout>
-      // </PageTransition>
     )
   }
 }

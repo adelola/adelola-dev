@@ -136,7 +136,7 @@ const Card = (props) => {
                 {project.tools.map((tool, index) => {
                  return (
                     <li key={index}> 
-                      <p>{tool}</p>    
+                      <p>{tool}</p>     
                     </li>
                  )
                 })}
