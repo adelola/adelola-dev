@@ -6,9 +6,10 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons'
 import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
-
 import styled from "@emotion/styled"
 import { jsx, css } from "@emotion/core"
 import colors from "../styles/colors"
@@ -46,6 +47,7 @@ const BackButtonStyle = styled.div`
   grid-column: 1/2;
   text-align: center;
 `;
+
 const LinkStyle = styled.div`
   grid-area: link;
   grid-row: 4/5;
@@ -54,26 +56,34 @@ const LinkStyle = styled.div`
   z-index: 20;
   display:grid;
   a {
-    color: white;
-
+    text-decoration: none;
   }
   .fa-chevron-circle-right {
     font-size: 4em;
     justify-self: end;
-
     @media (max-width: 780px) {
         font-size: 3em;
       }
+    &:hover {
+      color: ${colors.navy}
+    }
   }
-
   .fa-chevron-circle-left {
     font-size: 4em;
 
     @media (max-width: 780px) {
-        font-size: 3em;
-      }
+      font-size: 3em;
+    }
+    &:hover {
+    color: ${colors.navy}
+    }
   }
-
+  .link-name{
+    visibility: hidden;
+    display: block;
+    font-size: 1.4em;
+    color: ${colors.darknavy};
+  }
 `;
 const TitleStyle = styled.div`
   grid-area: title;
@@ -84,6 +94,15 @@ const TitleStyle = styled.div`
   z-index: 10;
   padding: 10em 3em;
 `;
+
+const ExternalLinkStyle = styled.div`
+  font-size: 1.75em;
+  a {
+  color: ${colors.darknavy};
+  
+  }
+`;
+
 const ImageStyle = styled.div`
   grid-area: image;
   grid-row: 2/5;
@@ -94,7 +113,6 @@ const ImageStyle = styled.div`
     box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.18);
   }
 `;
-
 
 const DescriptionStyle = styled.div`
   max-width: 1200px;
@@ -116,15 +134,13 @@ function SupplementalDescription(project) {
         <DescriptionStyle> 
           <div dangerouslySetInnerHTML={{ __html: project.props.description2.childContentfulRichText.html }} />
         </DescriptionStyle> 
-        
       </div>
     )
   }
-  return (
-    <BreakerStyle css={{  backgroundColor: `${project.props.color}` 
-  }}> 
-      &nbsp; 
-    </BreakerStyle>
+    return (
+      <BreakerStyle css={{  backgroundColor: `${project.props.color}`}}> 
+        &nbsp; 
+      </BreakerStyle>
   );
 }
 
@@ -135,7 +151,6 @@ class ProjectPageTemplate extends React.Component {
     const {previous, next} = this.props.pageContext
 
     return (
-
         <Layout location={this.props.location} title={siteTitle}>
           <SEO title={siteTitle}/>
           <ProjectPageStyle>
@@ -146,11 +161,17 @@ class ProjectPageTemplate extends React.Component {
               `linear-gradient(to bottom, ${project.color},  white)`], 
             }} >
               <BackButtonStyle>
-                <AniLink swipe direction="right" top="exit" to="/" duration={0.5} entryOffset={100}>Back Home</AniLink>
+                <AniLink swipe direction="right" top="exit" to="/" duration={0.5} entryOffset={100}>← Adelola</AniLink>
               </BackButtonStyle>
               <TitleStyle>
                 <h1>{project.name}</h1>
                 <p dangerouslySetInnerHTML= {{  __html:project.summary.childMarkdownRemark.html }}></p>
+                <ExternalLinkStyle>  
+                  <a href={project.repositoryUrl} css={{ ":hover": {color: `${project.color}`}
+                }}> <FontAwesomeIcon icon={faGithub} /> </a> &nbsp;&nbsp;
+                  <a href={project.projectUrl} css={{ ":hover": {color: `${project.color}`}
+                }}>  <FontAwesomeIcon icon={ faExternalLinkAlt} /></a>
+                </ExternalLinkStyle>
               </TitleStyle>
               <ImageStyle>
                 <Img alt="" className="project-image" fluid={project.heroImage.fluid} />
@@ -165,15 +186,15 @@ class ProjectPageTemplate extends React.Component {
               }}>
                   <li>
                     {next && (
-                      <AniLink swipe direction="right" top="exit" to={`/projects/${next.slug}`} duration={0.5} entryOffset={100} rel="next">
-                        <FontAwesomeIcon css={{ color: `${project.color}`}} icon={faChevronCircleLeft} />{next.name}
+                      <AniLink swipe direction="right" top="exit" to={`/projects/${next.slug}`} duration={0.5} entryOffset={100} rel="next" css= {{ ":hover": { ".link-name" : { "visibility": "visible" } } }}>
+                        <FontAwesomeIcon css={{ color: `${project.color}`}} icon={faChevronCircleLeft} /><span className="link-name">{next.name}</span>
                       </AniLink>
                     )}
                   </li>
                   <li>
                     {previous && (
-                      <AniLink swipe direction="left" top="exit" to={`/projects/${previous.slug}`} duration={0.5} entryOffset={100} rel="prev">
-                        {previous.name} <FontAwesomeIcon css={{ color: `${project.color}`}} icon={faChevronCircleRight} /> 
+                      <AniLink swipe direction="left" top="exit" to={`/projects/${previous.slug}`} duration={0.5} entryOffset={100} rel="prev" css= {{ ":hover": { ".link-name" : { "visibility": "visible" } } }}>
+                         <FontAwesomeIcon css={{ color: `${project.color}`}} icon={faChevronCircleRight} /> <span className="link-name">{previous.name}</span>
                       </AniLink>
                     )}
                   </li>

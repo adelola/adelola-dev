@@ -2,7 +2,7 @@ import React from "react"
 import Img from 'gatsby-image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import styled from "@emotion/styled"
 import { jsx } from "@emotion/core"
@@ -59,8 +59,6 @@ const ImageStyle = styled.div`
     bottom: 0;
   
     }
-
-
 `;
 
 const ToolsStyle = styled.div`
@@ -85,7 +83,6 @@ const ExternalLinkStyle = styled.div`
     vertical-align: bottom;
     bottom: 0;
     color: ${colors.darknavy};
-     
     }
 
 `;
@@ -94,7 +91,6 @@ const ExternalLinkStyle = styled.div`
 
 const Card = (props) => {
  
-
     const project = props.project
 
     // const NonStretchedImage = props => {
@@ -127,7 +123,6 @@ const Card = (props) => {
             </TitleStyle>
             <ImageStyle>
                   <Img fluid={project.heroImage.fluid} />
-
                   {/* <NonStretchedImage fluid={project.heroImage.fluid} /> */}
             </ImageStyle>
             
@@ -143,9 +138,9 @@ const Card = (props) => {
                 </ul>
             </ToolsStyle>
             <ExternalLinkStyle>  
-                <p><a href={project.repositoryUrl}> <FontAwesomeIcon icon={faGithub} /> </a></p>
+                <p><a href={project.repositoryUrl}> <FontAwesomeIcon icon={ faGithub } /> </a></p>
                 
-                <p> <a href={project.projectUrl}>  <FontAwesomeIcon icon={ faLink} /></a></p>
+                <p> <a href={project.projectUrl}>  <FontAwesomeIcon icon={ faExternalLinkAlt } /></a></p>
             </ExternalLinkStyle> 
         </CardStyle>
 
