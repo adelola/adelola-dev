@@ -5,70 +5,95 @@ import get from 'lodash/get'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons'
+import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
+
 import styled from "@emotion/styled"
-import { jsx } from "@emotion/core"
+import { jsx, css } from "@emotion/core"
 import colors from "../styles/colors"
 
 const ProjectPageStyle = styled.div`
 
-
   min-height: 100vh;
+  ul{
+    list-style: none;
+  }
+  a{
+    text-decoration: none;
+  }
+ 
 
 `
 
 const HeaderStyle = styled.div`
 
-  background-color: red;
   height: 550px;
   overflow: hidden;
   display: grid;
   grid-template-columns: auto 40% 40% auto;
-  grid-template-rows: 40px auto;
+  grid-template-rows: 40px auto 20em 15em;
   grid-template-areas: 
   "back . . ." 
-  "left title image right";
+  ". title image ."
+  "link title image link "
+  ". title image . ";
 `
-const BackButton = styled.div`
-  grid-area: back;
-  grid-row: 1/2;
-  grid-column: 1/2;
-  text-align: center;
-`;
+
 const BackButtonStyle = styled.div`
   grid-area: back;
   grid-row: 1/2;
   grid-column: 1/2;
   text-align: center;
 `;
+const LinkStyle = styled.div`
+  grid-area: link;
+  grid-row: 4/5;
+  grid-column: 1/5;
+  padding: 2em;
+  z-index: 20;
+  display:grid;
+  a {
+    color: white;
+
+  }
+  .fa-chevron-circle-right {
+    font-size: 4em;
+    justify-self: end;
+
+    @media (max-width: 780px) {
+        font-size: 3em;
+      }
+  }
+
+  .fa-chevron-circle-left {
+    font-size: 4em;
+
+    @media (max-width: 780px) {
+        font-size: 3em;
+      }
+  }
+
+`;
 const TitleStyle = styled.div`
   grid-area: title;
-  grid-row: 2/3;
+  grid-row: 2/5;
   grid-column: 2/3;
   text-align: left;
+  min-width: 400px;
+  z-index: 10;
+  padding: 10em 3em;
 `;
 const ImageStyle = styled.div`
   grid-area: image;
-  grid-row: 2/3;
+  grid-row: 2/5;
   grid-column: 3/4;
-  text-align: right;
+  margin-left: 1em;
+  margin-right: 1em;
+  .project-image{
+    box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.18);
+  }
 `;
-const LeftProjectStyle = styled.div`
-  grid-area: left;
-  grid-row: 2/3;
-  grid-column: 1/2;
-  text-align: left;
-`;
-
-const RightProjectStyle = styled.div`
-  grid-area: right;
-  grid-row: 2/3;
-  grid-column: 3/4;
-  text-align: right;
-`;
-
-
-
-
 
 
 const DescriptionStyle = styled.div`
@@ -78,17 +103,16 @@ const DescriptionStyle = styled.div`
 
 `
 const BreakerStyle = styled.div`
-
   height: 300px;
-  border: 1px red dotted;
 
 `
-function DescriptionTwo(project) {
+function SupplementalDescription(project) {
   console.log(project.props.description2)
   if (project.props.description2) {
     return (
       <div>
-        <BreakerStyle> &nbsp; </BreakerStyle>
+        <BreakerStyle css={{  backgroundColor: `${project.props.color}` 
+          }}> &nbsp; </BreakerStyle>
         <DescriptionStyle> 
           <div dangerouslySetInnerHTML={{ __html: project.props.description2.childContentfulRichText.html }} />
         </DescriptionStyle> 
@@ -97,7 +121,8 @@ function DescriptionTwo(project) {
     )
   }
   return (
-    <BreakerStyle> 
+    <BreakerStyle css={{  backgroundColor: `${project.props.color}` 
+  }}> 
       &nbsp; 
     </BreakerStyle>
   );
@@ -114,42 +139,46 @@ class ProjectPageTemplate extends React.Component {
         <Layout location={this.props.location} title={siteTitle}>
           <SEO title={siteTitle}/>
           <ProjectPageStyle>
-            <HeaderStyle>
+            <HeaderStyle 
+            css= {{ background: [
+              `white`,
+              `${project.color}`,
+              `linear-gradient(to bottom, ${project.color},  white)`], 
+            }} >
               <BackButtonStyle>
                 <AniLink swipe direction="right" top="exit" to="/" duration={0.5} entryOffset={100}>Back Home</AniLink>
               </BackButtonStyle>
               <TitleStyle>
                 <h1>{project.name}</h1>
+                <p dangerouslySetInnerHTML= {{  __html:project.summary.childMarkdownRemark.html }}></p>
               </TitleStyle>
               <ImageStyle>
-                <Img alt="" fluid={project.heroImage.fluid} />
+                <Img alt="" className="project-image" fluid={project.heroImage.fluid} />
               </ImageStyle>
-                  {/* Pagination Arrows */}
-                  <ul
-                style={{
-                  display: `flex`,
-                  flexWrap: `wrap`,
-                  justifyContent: `space-between`,
-                  listStyle: `none`,
-                  padding: 0,
-                }}
-              >
-
-                <li>
-                  {next && (
-                    <AniLink swipe direction="right" top="exit" to={`/projects/${next.slug}`} duration={0.5} entryOffset={100} rel="next">
-                      {next.name} ←
-                    </AniLink>
-                  )}
-                </li>
-              <li>
-                  {previous && (
-                    <AniLink swipe direction="left" top="exit" to={`/projects/${previous.slug}`} duration={0.5} entryOffset={100} rel="prev">
-                      {previous.name} →
-                    </AniLink>
-                  )}
-                </li>  
+              <LinkStyle>
+              <ul style={{
+                display: `flex`,
+                flexWrap: `wrap`,
+                justifyContent: `space-between`,
+                listStyle: `none`,
+                padding: 0,
+              }}>
+                  <li>
+                    {next && (
+                      <AniLink swipe direction="right" top="exit" to={`/projects/${next.slug}`} duration={0.5} entryOffset={100} rel="next">
+                        <FontAwesomeIcon css={{ color: `${project.color}`}} icon={faChevronCircleLeft} />{next.name}
+                      </AniLink>
+                    )}
+                  </li>
+                  <li>
+                    {previous && (
+                      <AniLink swipe direction="left" top="exit" to={`/projects/${previous.slug}`} duration={0.5} entryOffset={100} rel="prev">
+                        {previous.name} <FontAwesomeIcon css={{ color: `${project.color}`}} icon={faChevronCircleRight} /> 
+                      </AniLink>
+                    )}
+                  </li>
               </ul>
+              </LinkStyle>
               
             </HeaderStyle>
             
@@ -157,7 +186,7 @@ class ProjectPageTemplate extends React.Component {
               <div dangerouslySetInnerHTML={{ __html: project.description.childContentfulRichText.html }} />
             </DescriptionStyle>
             
-           <DescriptionTwo props={project} />
+           <SupplementalDescription props={project} />
           </ProjectPageStyle>
         </Layout>
     )
@@ -175,9 +204,15 @@ export const pageQuery = graphql`
     }
     contentfulProject( slug: { eq: $slug }) {
         name
+        color
         projectUrl
         repositoryUrl
         category
+        summary {
+            childMarkdownRemark{
+              html
+          }
+        }
         description {
             childContentfulRichText {
                 html
