@@ -16,6 +16,16 @@ const AboutPageStyle = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  pre{
+    line-height: 1.49em;
+    background-color: ${colors.lightgray};
+    color: #000;
+    @media (min-width: 768px) {
+    max-width: 75%; 
+    }
+  }
+
 `;
 
 const IntroStyle = styled.div`

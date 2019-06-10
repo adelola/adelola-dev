@@ -62,12 +62,10 @@ const ImageStyle = styled.div`
   bottom: 0;
   overflow: hidden;
   display:grid;
-  background-color: ${colors.white};
+  /* background-color: ${colors.darknavy}; */
   transform: translate(45px, 22px) rotate(-7deg);
   box-shadow: -10px 0px 35px 5px rgba(0,0,0,0.18);    
-  img {
-  justify-self: start;
-  }
+
 `;
 
 const ToolsStyle = styled.div`
@@ -92,7 +90,6 @@ const ExternalLinkStyle = styled.div`
   grid-area: external;
   grid-row: 1/2;
   grid-column: 1/2;
-  z-index: 12;
   text-align: left;
   a {
   vertical-align: bottom;
@@ -136,8 +133,9 @@ const Card = (props) => {
               <p className="project_summary" dangerouslySetInnerHTML= {{  __html:project.summary.childMarkdownRemark.html }}></p>
             </TitleStyle>
             <ImageStyle>
-                  <Img className="hero-image" fluid={project.heroImage.fluid} />
-                  {/* <NonStretchedImage fluid={project.heroImage.fluid} /> */}
+              <AniLink swipe direction="left" top="exit" to={`/projects/${project.slug}`} duration={0.7} entryOffset={100}>
+                <Img className="hero-image" fluid={project.heroImage.fluid} />
+              </AniLink>
             </ImageStyle>
             
             <ToolsStyle >

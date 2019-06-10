@@ -3,16 +3,23 @@ import styled from "@emotion/styled"
 import colors from "../styles/colors"
 
 const FooterStyle = styled.div`
-  background-color: ${colors.darknavy};
-  color: ${colors.white};
+  background-color: ${colors.gray};
+  color: ${colors.darknavy};
+  text-align: center;
+  font-weight: bold;
+  padding: 2em;
+
+  a {
+    color: ${colors.darknavy} 
+  }
 `;
 
 const Footer = () => (
     <FooterStyle>
       <footer>
-        © {new Date().getFullYear()}, Built with
+        © {new Date().getFullYear()}, Built by Adelola Adekunle with
         {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <a href="https://www.gatsbyjs.org">GatsbyJS</a>
      </footer>
   </FooterStyle>
 )

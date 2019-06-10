@@ -4,7 +4,6 @@ import Headroom from 'react-headroom'
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "@emotion/styled"
-// import { css } from "@emotion/core"
 import colors from "../styles/colors"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
@@ -12,7 +11,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 const Navstyle = styled.header`
   width: 100%;
-  z-index: 3;
+  z-index: 200;
   display: flex;
   justify-content: space-between;
   align-items: right;
@@ -63,6 +62,9 @@ const Navstyle = styled.header`
 
   #resume {
       color: ${colors.orange};
+      border: ${colors.orange} 3px solid;
+      border-radius: 15px;
+      padding: 2px 5px;
     }
 
   @media only screen and (max-width: 800px) {
@@ -168,7 +170,7 @@ class Nav extends React.Component{
                   <AnchorLink href={url} onClick= {e => this.handleToggle(e)}>{name}</AnchorLink>
                   </strong></li>
                 ))}
-            <li><strong><a href="/resume.pdf" id="resume" target="_blank" rel="nofollow noopener noreferrer"> Resume </a></strong></li>
+            <li><strong><a href="/Adelola_Resume.pdf" id="resume" target="_blank" rel="nofollow noopener noreferrer"> Resume </a></strong></li>
 
             </ul>
             
