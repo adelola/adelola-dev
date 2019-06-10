@@ -7,6 +7,7 @@ import colors from "../styles/colors"
 const ProjectsStyle = styled.div`
   background: ${colors.white};
   max-width: 100vw;
+  padding: 1em;
 
   ul{
     list-style: none;
@@ -20,23 +21,24 @@ const ProjectsStyle = styled.div`
 
 
 class Projects extends React.Component {
-    render() {
-      const projects = this.props.projects
+  render() {
+    const projects = this.props.projects
 
-    return (
-    <ProjectsStyle id="projects"> 
-      <h1> Projects </h1>
-      <ul >
-        {projects.map(({ node }) => {
-          return (
-            <li key={node.slug}>
-              <Card project= {node} />
-            </li>
-          )})
-        }
-      </ul>
-    </ProjectsStyle> 
-      )
-    }
+  return (
+  <ProjectsStyle id="projects"> 
+    <h1> Projects </h1>
+    <ul >
+      {projects.map(({ node }) => {
+        return (
+          <li key={node.slug}>
+            <Card project= {node} />
+          </li>
+        )})
+      }
+    </ul>
+  </ProjectsStyle> 
+    )
   }
-  export default Projects
+}
+
+export default Projects

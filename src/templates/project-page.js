@@ -15,7 +15,6 @@ import { jsx, css } from "@emotion/core"
 import colors from "../styles/colors"
 
 const ProjectPageStyle = styled.div`
-
   min-height: 100vh;
   ul{
     list-style: none;
@@ -23,12 +22,9 @@ const ProjectPageStyle = styled.div`
   a{
     text-decoration: none;
   }
- 
-
 `
 
 const HeaderStyle = styled.div`
-
   height: 550px;
   overflow: hidden;
   display: grid;
@@ -81,10 +77,11 @@ const LinkStyle = styled.div`
   .link-name{
     visibility: hidden;
     display: block;
-    font-size: 1.4em;
+    font-size: 1.2em;
     color: ${colors.darknavy};
   }
 `;
+
 const TitleStyle = styled.div`
   grid-area: title;
   grid-row: 2/5;
@@ -98,8 +95,7 @@ const TitleStyle = styled.div`
 const ExternalLinkStyle = styled.div`
   font-size: 1.75em;
   a {
-  color: ${colors.darknavy};
-  
+    color: ${colors.darknavy};
   }
 `;
 
@@ -108,9 +104,10 @@ const ImageStyle = styled.div`
   grid-row: 2/5;
   grid-column: 3/4;
   margin-left: 1em;
-  margin-right: 1em;
+  margin-right: 1.5em;
   .project-image{
     box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.18);
+    overflow: hidden;
   }
 `;
 
@@ -118,11 +115,9 @@ const DescriptionStyle = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 3em;
-
 `
 const BreakerStyle = styled.div`
   height: 300px;
-
 `
 function SupplementalDescription(project) {
   console.log(project.props.description2)
@@ -151,65 +146,65 @@ class ProjectPageTemplate extends React.Component {
     const {previous, next} = this.props.pageContext
 
     return (
-        <Layout location={this.props.location} title={siteTitle}>
-          <SEO title={siteTitle}/>
-          <ProjectPageStyle>
-            <HeaderStyle 
-            css= {{ background: [
-              `white`,
-              `${project.color}`,
-              `linear-gradient(to bottom, ${project.color},  white)`], 
-            }} >
-              <BackButtonStyle>
-                <AniLink swipe direction="right" top="exit" to="/" duration={0.5} entryOffset={100}>← Adelola</AniLink>
-              </BackButtonStyle>
-              <TitleStyle>
-                <h1>{project.name}</h1>
-                <p dangerouslySetInnerHTML= {{  __html:project.summary.childMarkdownRemark.html }}></p>
-                <ExternalLinkStyle>  
-                  <a href={project.repositoryUrl} css={{ ":hover": {color: `${project.color}`}
-                }}> <FontAwesomeIcon icon={faGithub} /> </a> &nbsp;&nbsp;
-                  <a href={project.projectUrl} css={{ ":hover": {color: `${project.color}`}
-                }}>  <FontAwesomeIcon icon={ faExternalLinkAlt} /></a>
-                </ExternalLinkStyle>
-              </TitleStyle>
-              <ImageStyle>
-                <Img alt="" className="project-image" fluid={project.heroImage.fluid} />
-              </ImageStyle>
-              <LinkStyle>
-              <ul style={{
-                display: `flex`,
-                flexWrap: `wrap`,
-                justifyContent: `space-between`,
-                listStyle: `none`,
-                padding: 0,
-              }}>
-                  <li>
-                    {next && (
-                      <AniLink swipe direction="right" top="exit" to={`/projects/${next.slug}`} duration={0.5} entryOffset={100} rel="next" css= {{ ":hover": { ".link-name" : { "visibility": "visible" } } }}>
-                        <FontAwesomeIcon css={{ color: `${project.color}`}} icon={faChevronCircleLeft} /><span className="link-name">{next.name}</span>
-                      </AniLink>
-                    )}
-                  </li>
-                  <li>
-                    {previous && (
-                      <AniLink swipe direction="left" top="exit" to={`/projects/${previous.slug}`} duration={0.5} entryOffset={100} rel="prev" css= {{ ":hover": { ".link-name" : { "visibility": "visible" } } }}>
-                         <FontAwesomeIcon css={{ color: `${project.color}`}} icon={faChevronCircleRight} /> <span className="link-name">{previous.name}</span>
-                      </AniLink>
-                    )}
-                  </li>
-              </ul>
-              </LinkStyle>
-              
-            </HeaderStyle>
+      <Layout location={this.props.location} title={siteTitle}>
+        <SEO title={siteTitle}/>
+        <ProjectPageStyle>
+          <HeaderStyle 
+          css= {{ background: [
+            `white`,
+            `${project.color}`,
+            `linear-gradient(to bottom, ${project.color},  white)`], 
+          }} >
+            <BackButtonStyle>
+              <AniLink swipe direction="right" top="exit" to="/" duration={0.5} entryOffset={100}>← Adelola</AniLink>
+            </BackButtonStyle>
+            <TitleStyle>
+              <h1>{project.name}</h1>
+              <p dangerouslySetInnerHTML= {{  __html:project.summary.childMarkdownRemark.html }}></p>
+              <ExternalLinkStyle>  
+                <a href={project.repositoryUrl} css={{ ":hover": {color: `${project.color}`}
+              }}> <FontAwesomeIcon icon={faGithub} /> </a> &nbsp;&nbsp;
+                <a href={project.projectUrl} css={{ ":hover": {color: `${project.color}`}
+              }}>  <FontAwesomeIcon icon={ faExternalLinkAlt} /></a>
+              </ExternalLinkStyle>
+            </TitleStyle>
+            <ImageStyle>
+              <Img alt="" className="project-image" fluid={project.heroImage.fluid} />
+            </ImageStyle>
+            <LinkStyle>
+            <ul style={{
+              display: `flex`,
+              flexWrap: `wrap`,
+              justifyContent: `space-between`,
+              listStyle: `none`,
+              padding: 0,
+            }}>
+                <li>
+                  {next && (
+                    <AniLink swipe direction="right" top="exit" to={`/projects/${next.slug}`} duration={0.5} entryOffset={100} rel="next" css= {{ ":hover": { ".link-name" : { "visibility": "visible" } } }}>
+                      <FontAwesomeIcon css={{ color: `${project.color}`}} icon={faChevronCircleLeft} /><span className="link-name">{next.name}</span>
+                    </AniLink>
+                  )}
+                </li>
+                <li>
+                  {previous && (
+                    <AniLink swipe direction="left" top="exit" to={`/projects/${previous.slug}`} duration={0.5} entryOffset={100} rel="prev" css= {{ ":hover": { ".link-name" : { "visibility": "visible" } } }}>
+                        <FontAwesomeIcon css={{ color: `${project.color}`}} icon={faChevronCircleRight} /> <span className="link-name">{previous.name}</span>
+                    </AniLink>
+                  )}
+                </li>
+            </ul>
+            </LinkStyle>
             
-            <DescriptionStyle>
-              <div dangerouslySetInnerHTML={{ __html: project.description.childContentfulRichText.html }} />
-            </DescriptionStyle>
-            
-           <SupplementalDescription props={project} />
-          </ProjectPageStyle>
-        </Layout>
+          </HeaderStyle>
+          
+          <DescriptionStyle>
+            <div dangerouslySetInnerHTML={{ __html: project.description.childContentfulRichText.html }} />
+          </DescriptionStyle>
+          
+          <SupplementalDescription props={project} />
+        </ProjectPageStyle>
+      </Layout>
     )
   }
 }
