@@ -61,11 +61,15 @@ const ImageStyle = styled.div`
   grid-column: 2/5;
   bottom: 0;
   overflow: hidden;
+  background-size:cover;
   display:grid;
   /* background-color: ${colors.darknavy}; */
   transform: translate(45px, 22px) rotate(-7deg);
   box-shadow: -10px 0px 35px 5px rgba(0,0,0,0.18);    
-
+  .hero-image {
+    height:100%;
+    object-fit: cover;
+  }
 `;
 
 const ToolsStyle = styled.div`
@@ -103,22 +107,6 @@ const ExternalLinkStyle = styled.div`
 
 const Card = (props) => {
     const project = props.project
-
-    // const NonStretchedImage = props => {
-    //     let normalizedProps = props
-    //     if (props.fluid) {
-    //       normalizedProps = {
-    //         ...props,
-    //         style: {
-    //           ...(props.style || {}),
-    //           maxWidth: 300,
-    //           margin: "0 auto", // Used to center the image
-    //         },
-    //       }
-    //     }
-    //     return <Img {...normalizedProps} />
-    //   }
-
     return (
 
         <CardStyle 

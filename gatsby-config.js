@@ -28,7 +28,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-emotion`,
-    `@contentful/gatsby-transformer-contentful-richtext`,
+    // `@contentful/gatsby-transformer-contentful-richtext`,
     {
        resolve: `gatsby-plugin-typography`,
        options: {

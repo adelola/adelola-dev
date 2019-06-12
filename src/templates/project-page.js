@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Img from 'gatsby-image'
 import get from 'lodash/get'
 import Layout from "../components/layout"
@@ -114,38 +114,50 @@ const ImageStyle = styled.div`
 const DescriptionStyle = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3em;
+  padding: 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  
+
+
+
+  .project-snapshot{
+    grid-area: snapshot;
+  }
+
+
+
+
 `
 const BreakerStyle = styled.div`
   height: 300px;
 `
-function SupplementalDescription(project) {
-  console.log(project.props.description2)
-  if (project.props.description2) {
-    return (
-      <div>
-        <BreakerStyle css={{  backgroundColor: `${project.props.color}` 
-          }}> &nbsp; </BreakerStyle>
-        <DescriptionStyle> 
-          <div dangerouslySetInnerHTML={{ __html: project.props.description2.childContentfulRichText.html }} />
-        </DescriptionStyle> 
-      </div>
-    )
-  }
-    return (
-      <BreakerStyle css={{  backgroundColor: `${project.props.color}`}}> 
-        &nbsp; 
-      </BreakerStyle>
-  );
-}
+
 
 class ProjectPageTemplate extends React.Component {
   render() {
     const project = get(this.props, 'data.contentfulProject')
+    const media = get(this.props, 'data.contentfulProject.mediaGallery')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const {previous, next} = this.props.pageContext
 
-    return (
+    const NonStretchedImage = props => {
+    let normalizedProps = props
+    if (props.fluid) {
+      normalizedProps = {
+        ...props,
+        style: {
+          ...(props.style || {}),
+          maxWidth: 500,
+          margin: "0 auto", // Used to center the image
+        },
+      }
+    }
+    return <Img {...normalizedProps} />
+  }
+    
+    
+  return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title={siteTitle}/>
         <ProjectPageStyle>
@@ -199,10 +211,22 @@ class ProjectPageTemplate extends React.Component {
           </HeaderStyle>
           
           <DescriptionStyle>
-            <div dangerouslySetInnerHTML={{ __html: project.description.childContentfulRichText.html }} />
+            <p dangerouslySetInnerHTML={{  __html: project.description1.childMarkdownRemark.html, }}></p> 
+            <p dangerouslySetInnerHTML={{  __html: project.description2.childMarkdownRemark.html, }}></p> 
+            <p dangerouslySetInnerHTML={{  __html: project.description3.childMarkdownRemark.html, }}></p> 
+            
+            <ul>
+              { media.map(({ fluid }) => {
+                return (
+                  <li>
+                    <NonStretchedImage className="project-snapshot" fluid={fluid} />
+                  </li>
+                )})
+              }
+            </ul>
           </DescriptionStyle>
           
-          <SupplementalDescription props={project} />
+        
         </ProjectPageStyle>
       </Layout>
     )
@@ -229,18 +253,28 @@ export const pageQuery = graphql`
               html
           }
         }
-        description {
-            childContentfulRichText {
-                html
-            }
+        description1 {
+            childMarkdownRemark{
+              html
+          }
         }
         description2 {
-            childContentfulRichText {
-                html
-            }
+            childMarkdownRemark{
+              html
+          }
+        }
+        description3 {
+            childMarkdownRemark{
+              html
+          }
         }
         heroImage {
-            fluid(maxWidth: 600){
+          fluid(maxWidth: 600){
+            ...GatsbyContentfulFluid
+          }
+        }
+        mediaGallery{
+          fluid(maxWidth: 500){
               ...GatsbyContentfulFluid
             }
         }
