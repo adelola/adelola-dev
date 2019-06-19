@@ -1,13 +1,13 @@
-import React from "react"
-import Section from "../components/section"
-import Card from "../components/card"
-import styled from "@emotion/styled"
-import colors from "../styles/colors"
+import React from 'react'
+import Section from '../components/section'
+import Card from '../components/card'
+import styled from '@emotion/styled'
+import colors from '../styles/colors'
 
 const ProjectsStyle = styled.div`
   background: ${colors.white};
   max-width: 100vw;
-  padding: 1em;
+  padding: 2em 5em;
 
   ul{
     list-style: none;

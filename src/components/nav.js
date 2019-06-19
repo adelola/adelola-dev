@@ -1,12 +1,13 @@
-import React from "react"
+import React from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import Headroom from 'react-headroom'
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import styled from "@emotion/styled"
-import colors from "../styles/colors"
+import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
+import styled from '@emotion/styled'
+import colors from '../styles/colors'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import Avatar from '../images/Adelola-avatar.svg'
 
 
 const Navstyle = styled.header`
@@ -59,6 +60,13 @@ const Navstyle = styled.header`
       }  
     }
   }
+  #avatar{
+    fill: ${colors.orange};
+  }
+  #avatar:hover {
+    fill: ${colors.darknavy};
+  }
+
 
   #resume {
       color: ${colors.orange};
@@ -66,6 +74,10 @@ const Navstyle = styled.header`
       border-radius: 15px;
       padding: 2px 5px;
     }
+  .logo {
+    margin-top: 5px;
+    width: 60px;
+  }
 
   @media only screen and (max-width: 800px) {
     padding: 0px;
@@ -80,9 +92,9 @@ const Navstyle = styled.header`
     display: block;
     position: relative;
     .logo {
-      width: 100%;
+      padding-top: 15px;
+      width: 70px;
       display: block;
-      padding-top: 20px;
       margin: 0px;
       margin-left: -5px;
       a {
@@ -152,14 +164,14 @@ class Nav extends React.Component{
   render(){
     const { isExpanded } = this.state;
     const anchorLinks = [{ url: "#about", name:"About"}, 
-                        { url: "#experience", name:"Experience"}, 
+                        // { url: "#experience", name:"Experience"}, 
                         { url: "#projects", name:"Projects"} ]
     return (
       <Headroom>
         <Navstyle>
           <div className="logo">
             <Link to="/">
-              Logo
+              <Avatar />
             </Link>
           </div>
           <nav className="nav">

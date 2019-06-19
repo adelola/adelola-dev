@@ -1,12 +1,11 @@
-import React from "react"
-import Section from "../components/section"
+import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCodepen } from '@fortawesome/free-brands-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
-import styled from "@emotion/styled"
-import colors from "../styles/colors"
+import styled from '@emotion/styled'
+import colors from '../styles/colors'
 
 const AboutPageStyle = styled.div`
   min-height: 100vh;
@@ -46,11 +45,11 @@ const SocialStyle = styled.div`
     color: ${colors.orange};
     display: block;
     position: absolute;
-    top: 24%; left: 90%;
+    top: 55%; left: 90%;
     width: 7em; height: 2em;
     margin: -2em;
     @media (max-width: 768px) {
-      top: 21%; left: 80%;
+      top: 35%; left: 83%;
     }
     @media (max-width:420px) {
       display: none;

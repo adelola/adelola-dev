@@ -1,18 +1,20 @@
-import React, { Fragment } from "react"
+import React, { Fragment } from 'react'
 import { graphql } from "gatsby"
 import Img from 'gatsby-image'
 import get from 'lodash/get'
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons'
 import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
-import styled from "@emotion/styled"
-import { jsx, css } from "@emotion/core"
-import colors from "../styles/colors"
+import styled from '@emotion/styled'
+import { jsx, css } from '@emotion/core'
+import colors from '../styles/colors'
+import Avatar from '../images/Adelola-avatar.svg'
+
 
 const ProjectPageStyle = styled.div`
   min-height: 100vh;
@@ -42,6 +44,16 @@ const BackButtonStyle = styled.div`
   grid-row: 1/2;
   grid-column: 1/2;
   text-align: center;
+  #avatar{
+    fill: ${colors.darknavy};
+  }
+  .logo{
+    width: 60px;
+    padding-top: 1em;
+  }
+  a {
+    color: ${colors.darknavy};
+  }
 `;
 
 const LinkStyle = styled.div`
@@ -107,32 +119,44 @@ const ImageStyle = styled.div`
   margin-right: 1.5em;
   .project-image{
     box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.18);
-    overflow: hidden;
   }
 `;
 
 const DescriptionStyle = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2em;
+  padding: 1em;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  
+  grid-gap: 1rem;
+  grid-template-columns: minmax(350px, max-content);
 
-
-
-  .project-snapshot{
-    grid-area: snapshot;
+  @media (min-width: 780px) {    
+    .des-4 {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+    .des-1 {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+    .des-2 {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
+    .des-5 {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
+    .des-6 {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+    }
+    .des-3 {
+      grid-column: 2 / 3;
+      grid-row: 3 / 4;
+    }
   }
-
-
-
-
 `
-const BreakerStyle = styled.div`
-  height: 300px;
-`
-
 
 class ProjectPageTemplate extends React.Component {
   render() {
@@ -168,7 +192,7 @@ class ProjectPageTemplate extends React.Component {
             `linear-gradient(to bottom, ${project.color},  white)`], 
           }} >
             <BackButtonStyle>
-              <AniLink swipe direction="right" top="exit" to="/" duration={0.5} entryOffset={100}>← Adelola</AniLink>
+              <AniLink swipe direction="right" top="exit" to="/" duration={0.5} entryOffset={100}>← <Avatar className="logo"/></AniLink>
             </BackButtonStyle>
             <TitleStyle>
               <h1>{project.name}</h1>
@@ -211,22 +235,21 @@ class ProjectPageTemplate extends React.Component {
           </HeaderStyle>
           
           <DescriptionStyle>
-            <p dangerouslySetInnerHTML={{  __html: project.description1.childMarkdownRemark.html, }}></p> 
-            <p dangerouslySetInnerHTML={{  __html: project.description2.childMarkdownRemark.html, }}></p> 
-            <p dangerouslySetInnerHTML={{  __html: project.description3.childMarkdownRemark.html, }}></p> 
+            <p className="des-1" dangerouslySetInnerHTML={{  __html: project.description1.childMarkdownRemark.html, }}></p> 
+            <p className="des-2" dangerouslySetInnerHTML={{  __html: project.description2.childMarkdownRemark.html, }}></p> 
+            <p className="des-3" dangerouslySetInnerHTML={{  __html: project.description3.childMarkdownRemark.html, }}></p> 
             
-            <ul>
-              { media.map(({ fluid }) => {
+         
+              { media.map(({ fluid }, i ) => {
                 return (
-                  <li>
-                    <NonStretchedImage className="project-snapshot" fluid={fluid} />
-                  </li>
+                  <p className={`des-${i + 4}`}>
+                    <NonStretchedImage  fluid={fluid} />
+                  </p>
                 )})
               }
-            </ul>
+           
           </DescriptionStyle>
           
-        
         </ProjectPageStyle>
       </Layout>
     )

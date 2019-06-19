@@ -1,5 +1,5 @@
-import React from "react"
-import Section from "../components/section"
+import React from 'react'
+import Section from '../components/section'
 
 class Mission extends React.Component {
     render() {

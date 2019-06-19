@@ -1,7 +1,7 @@
-import React from "react"
-// import Section from "../components/section"
-import styled from "@emotion/styled"
-import colors from "../styles/colors"
+import React from 'react'
+// import Section from '../components/section'
+import styled from '@emotion/styled'
+import colors from '../styles/colors'
 
 const ExperienceStyle = styled.div`
   min-height: 100vh;

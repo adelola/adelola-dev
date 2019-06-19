@@ -1,13 +1,13 @@
-import React from "react"
+import React from 'react'
 import Img from 'gatsby-image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
-import AniLink from "gatsby-plugin-transition-link/AniLink"
-import styled from "@emotion/styled"
-import { jsx } from "@emotion/core"
-import colors from "../styles/colors"
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
+import colors from '../styles/colors'
 
 const CardStyle = styled.div`
   max-width: 500px;

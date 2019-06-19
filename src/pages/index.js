@@ -1,13 +1,13 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react'
+import { graphql } from 'gatsby'
 import get from 'lodash/get'
-import Layout from "../components/layout"
-import Nav from "../components/nav"
-import SEO from "../components/seo"
-import About from "../sections/about"
-import Experience from "../sections/experience"
-import Projects from "../sections/projects"
-import Footer from "../components/footer"
+import Layout from '../components/layout'
+import Nav from '../components/nav'
+import SEO from '../components/seo'
+import About from '../sections/about'
+// import Experience from '../sections/experience'
+import Projects from '../sections/projects'
+import Footer from '../components/footer'
 
 
 
@@ -23,7 +23,7 @@ class RootIndex extends React.Component {
         <SEO title={siteTitle} keywords={[`Adelola`, `Adelola Adekunle`, `Adekunle`]} />
         <Nav />
         <About intro={person.briefIntro.childMarkdownRemark.html} socials= {social_links}/>
-        <Experience />
+        {/* <Experience /> */}
         <Projects projects= {projects} />
         <Footer />
       </Layout>
