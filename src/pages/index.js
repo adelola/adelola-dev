@@ -11,6 +11,7 @@ import Footer from '../components/footer'
 
 
 
+
 class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
