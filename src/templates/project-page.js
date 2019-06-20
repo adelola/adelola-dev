@@ -51,7 +51,7 @@ const BackButtonStyle = styled.div`
     width: 60px;
     padding-top: 1em;
   }
-  a {
+  a  {
     color: ${colors.darknavy};
   }
 `;
