@@ -44,7 +44,7 @@ module.exports = {
         background_color: config.background_color,
         theme_color: config.theme_color,
         display: `minimal-ui`,
-        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
     {
@@ -55,7 +55,6 @@ module.exports = {
           }
       }
     },
-    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
