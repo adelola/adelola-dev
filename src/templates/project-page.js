@@ -128,33 +128,53 @@ const DescriptionStyle = styled.div`
   padding: 1em;
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: minmax(350px, max-content);
 
-  @media (min-width: 780px) {    
-    .des-4 {
-      grid-column: 1 / 2;
-      grid-row: 1 / 2;
+  .des-4 {
+      grid-area: first-img;
     }
     .des-1 {
-      grid-column: 2 / 3;
-      grid-row: 1 / 2;
+      grid-area: first-des;
     }
     .des-2 {
-      grid-column: 1 / 2;
-      grid-row: 2 / 3;
+      grid-area: sec-des;
     }
     .des-5 {
-      grid-column: 2 / 3;
-      grid-row: 2 / 3;
+      grid-area: sec-img;
+      img {
+        border: 1px red solid;
+      box-shadow: 20px 0px 35px 0px rgba(0,0,0,0.18);
+      }
     }
     .des-6 {
-      grid-column: 1 / 2;
-      grid-row: 3 / 4;
+      grid-area: third-img;
     }
     .des-3 {
-      grid-column: 2 / 3;
-      grid-row: 3 / 4;
+      grid-area: third-des;
     }
+    .des-7 {
+      grid-area: fourth-img;
+    }
+
+
+
+  @media (min-width: 780px) {
+    grid-template:
+    'first-img first-des'
+    'sec-des sec-des'
+    'sec-img sec-img'
+    'third-des third-img'
+    'third-des fourth-img';
+
+  }
+
+  @media (max-width: 779px) {
+    grid-template:
+    'first-des'
+    'first-img' 
+    'sec-des' 
+    'sec-img'
+    'third-des' 
+    'third-img';
   }
 `
 
@@ -172,7 +192,7 @@ class ProjectPageTemplate extends React.Component {
         ...props,
         style: {
           ...(props.style || {}),
-          maxWidth: 500,
+          maxWidth: 650,
           margin: "0 auto", // Used to center the image
         },
       }
@@ -297,7 +317,7 @@ export const pageQuery = graphql`
           }
         }
         mediaGallery{
-          fluid(maxWidth: 500){
+          fluid(maxWidth: 650){
               ...GatsbyContentfulFluid
             }
         }
