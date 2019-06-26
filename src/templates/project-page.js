@@ -140,10 +140,6 @@ const DescriptionStyle = styled.div`
     }
     .des-5 {
       grid-area: sec-img;
-      img {
-        border: 1px red solid;
-      box-shadow: 20px 0px 35px 0px rgba(0,0,0,0.18);
-      }
     }
     .des-6 {
       grid-area: third-img;
@@ -154,6 +150,9 @@ const DescriptionStyle = styled.div`
     .des-7 {
       grid-area: fourth-img;
     }
+    .des-8 {
+      grid-area: fifth-img;
+    }
 
 
 
@@ -163,7 +162,8 @@ const DescriptionStyle = styled.div`
     'sec-des sec-des'
     'sec-img sec-img'
     'third-des third-img'
-    'third-des fourth-img';
+    'third-des fourth-img'
+    'third-des fifth-img';
 
   }
 
