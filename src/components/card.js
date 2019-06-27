@@ -10,8 +10,14 @@ import { jsx } from '@emotion/core'
 import colors from '../styles/colors'
 
 const CardStyle = styled.div`
-  max-width: 500px;
+  @media (max-width: 413px) {
+    min-width: 300px;
+  }
+  @media (max-width: 767px) {
+    min-width: 333px;
+  }
   min-width: 400px;
+  max-width: 500px;
   height: 600px;
   padding: 1em 1em 0 1em;
   overflow: hidden;
@@ -53,6 +59,12 @@ const TitleStyle = styled.div`
   p {
     color: #474a51; 
     }
+  @media (max-width: 768px) {
+    line-height: .75em;
+    h1{
+     margin-top: 1em; 
+    }
+  }
 `;
 
 const ImageStyle = styled.div`
@@ -101,6 +113,7 @@ const ExternalLinkStyle = styled.div`
   color: ${colors.white};
   }
   font-size: 1.5em;
+  
 `;
 
 

@@ -7,8 +7,12 @@ import colors from '../styles/colors'
 const ProjectsStyle = styled.div`
   background: ${colors.white};
   max-width: 100vw;
-  padding: 2em 5em;
-
+  
+  @media (max-width: 768px) {
+    padding: 1em 0.5em;
+    }
+    padding: 2em 3em;
+    
   ul{
     list-style: none;
     display: flex;

@@ -10,33 +10,44 @@ import colors from '../styles/colors'
 const AboutPageStyle = styled.div`
   min-height: 100vh;
   color: ${colors.navy};
-  padding: 5em 3em;
+  padding: 5em 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   pre{
-    line-height: 1.49em;
     background-color: ${colors.lightgray};
     color: #000;
     @media (min-width: 768px) {
-    max-width: 75%; 
+    max-width: 75%;
+    line-height: 1.49em; 
+    }
+    @media (max-width: 767px) {
+    max-width: 98%;
+    line-height: 1em;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+
     }
   }
-
 `;
 
 const IntroStyle = styled.div`
+  @media (max-width: 768px) {
+    max-width: 98%;
+    font-size: 1em; 
+    }
   max-width: 70%;
   font-size: 1.25em;
   p{
     color: ${colors.orange};
     font-weight: 700;
   }
-  @media (max-width: 768px) {
-    max-width: 95%; 
-    }
 `;
 
 const SocialStyle = styled.div`
@@ -45,15 +56,18 @@ const SocialStyle = styled.div`
     color: ${colors.orange};
     display: block;
     position: absolute;
-    top: 55%; left: 90%;
-    width: 7em; height: 2em;
     margin: -2em;
-    @media (max-width: 768px) {
-      top: 35%; left: 83%;
-    }
     @media (max-width:420px) {
       display: none;
     }
+    @media (max-width: 768px) {
+      top: 40%; left: 82%;
+    }
+    @media (max-width: 1024px) {
+      top: 45%; left: 85%;
+    }
+    top: 55%; left: 90%;
+    width: 7em; height: 2em;
   }
 
   .circle-container .awesome-icon { 

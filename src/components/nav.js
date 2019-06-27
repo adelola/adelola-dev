@@ -47,6 +47,7 @@ const Navstyle = styled.header`
       list-style: none;
     }
     li {
+      padding-top: 15px;
       margin: 0 15px;
       justify-content: space-between;
       font-size: 1em;
