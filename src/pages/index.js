@@ -60,7 +60,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulProject {
+    allContentfulProject (
+            filter: { hasPage: {eq: true} }
+            sort: { fields: rating order: DESC }
+          ){
       edges {
         node {
           name

@@ -8,19 +8,19 @@ exports.createPages = ({ graphql, actions }) => {
     resolve(
       graphql(
         `{
-            allContentfulProject(
-              filter: { hasPage: {eq: true} }
-              sort: { fields: rating order: DESC }
-            ){
-              edges{
-                node{
-                  name
-                  slug
-                }
+          allContentfulProject(
+            filter: { hasPage: {eq: true} }
+            sort: { fields: rating order: DESC }
+          ){
+            edges{
+              node{
+                name
+                slug
               }
-            } 
-          }
-          `
+            }
+          } 
+        }
+        `
       ).then(result => {
         if (result.errors) {
           console.log(result.errors)
