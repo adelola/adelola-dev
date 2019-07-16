@@ -165,7 +165,7 @@ class Nav extends React.Component{
   render(){
     const { isExpanded } = this.state;
     const anchorLinks = [{ url: "#about", name:"About"}, 
-                        // { url: "#experience", name:"Experience"}, 
+                        { url: "#experience", name:"Experience"}, 
                         { url: "#projects", name:"Projects"} ]
     return (
       <Headroom>
@@ -183,7 +183,7 @@ class Nav extends React.Component{
                   <AnchorLink href={url} onClick= {e => this.handleToggle(e)}>{name}</AnchorLink>
                   </strong></li>
                 ))}
-            <li><strong><a href="/Adelola_Resume.pdf" id="resume" target="_blank" rel="nofollow noopener noreferrer"> Resume </a></strong></li>
+            <li><strong><a href="/Adelola_dev_resume.pdf" id="resume" target="_blank" rel="nofollow noopener noreferrer"> Resume </a></strong></li>
 
             </ul>
             

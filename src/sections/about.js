@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCodepen } from '@fortawesome/free-brands-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
+import { faDribbble } from '@fortawesome/free-brands-svg-icons'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import styled from '@emotion/styled'
 import colors from '../styles/colors'
@@ -101,7 +101,7 @@ class About extends React.Component {
           <ul>
             <li><a href= {this.props.socials.codePen} className='deg145'><FontAwesomeIcon className='awesome-icon' icon={faCodepen} /></a></li>
             <li><a href= {this.props.socials.github} className='deg190'><FontAwesomeIcon className='awesome-icon' icon={faGithub} /></a></li>
-            <li><a href= {this.props.socials.linkedin} className='deg245'><FontAwesomeIcon className='awesome-icon' icon={faLinkedinIn} /></a></li>
+            <li><a href= {this.props.socials.dribbble} className='deg245'><FontAwesomeIcon className='awesome-icon' icon={faDribbble} /></a></li>
             <li><a href= {this.props.socials.twitter} className='deg300'><FontAwesomeIcon className='awesome-icon' icon={faTwitter} /></a></li>
           </ul>
           </div>

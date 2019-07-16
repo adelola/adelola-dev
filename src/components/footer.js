@@ -17,7 +17,7 @@ const FooterStyle = styled.div`
 const Footer = () => (
     <FooterStyle>
       <footer>
-        © {new Date().getFullYear()}, Built by Adelola Adekunle with
+        © {new Date().getFullYear()}, Built by Adelola with
         {` `}
         <a href="https://www.gatsbyjs.org">GatsbyJS</a>
      </footer>

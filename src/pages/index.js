@@ -5,7 +5,7 @@ import Layout from '../components/layout'
 import Nav from '../components/nav'
 import SEO from '../components/seo'
 import About from '../sections/about'
-// import Experience from '../sections/experience'
+import Experience from '../sections/experience'
 import Projects from '../sections/projects'
 import Footer from '../components/footer'
 
@@ -17,14 +17,14 @@ class RootIndex extends React.Component {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const person = get(this, 'props.data.allContentfulPerson.edges[0].node')
     const projects =  get(this, 'props.data.allContentfulProject.edges')
-    const social_links = {codePen: person.codePen, github: person.github, linkedin: person.linkedin, twitter: person.twitter }
+    const social_links = {codePen: person.codePen, github: person.github, dribbble: person.dribbble, twitter: person.twitter }
 
-  return (
+    return (
       <Layout>
-        <SEO title={siteTitle} keywords={[`Adelola`, `Adelola Adekunle`, `Adekunle`]} />
+        <SEO title={siteTitle} keywords={[`Adelola`, `Lola`]} />
         <Nav />
         <About intro={person.briefIntro.childMarkdownRemark.html} socials= {social_links}/>
-        {/* <Experience /> */}
+        <Experience sequence={person.images} />
         <Projects projects= {projects} />
         <Footer />
       </Layout>
@@ -55,8 +55,13 @@ export const pageQuery = graphql`
           email
           codePen
           github
-          linkedin
+          dribbble
           twitter
+          images{
+            fluid(maxWidth: 500){
+              ...GatsbyContentfulFluid
+            }
+          }
         }
       }
     }
@@ -75,7 +80,6 @@ export const pageQuery = graphql`
               background: "rgb:000000"
             ){
               ...GatsbyContentfulFluid
-
             }
           }
           projectUrl
