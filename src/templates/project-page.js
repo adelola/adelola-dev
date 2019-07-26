@@ -186,19 +186,19 @@ class ProjectPageTemplate extends React.Component {
     const {previous, next} = this.props.pageContext
 
     const NonStretchedImage = props => {
-    let normalizedProps = props
-    if (props.fluid) {
-      normalizedProps = {
-        ...props,
-        style: {
-          ...(props.style || {}),
-          maxWidth: 650,
-          margin: "0 auto", // Used to center the image
-        },
+        let normalizedProps = props
+        if (props.fluid) {
+          normalizedProps = {
+            ...props,
+            style: {
+              ...(props.style || {}),
+              maxWidth: 650,
+              margin: "0 auto", // Used to center the image
+            },
+          }
+        }
+        return <Img {...normalizedProps} />
       }
-    }
-    return <Img {...normalizedProps} />
-  }
     
     
   return (

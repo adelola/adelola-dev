@@ -1,95 +1,92 @@
 import React from 'react'
-import Img from 'gatsby-image'
 import styled from '@emotion/styled'
 import colors from '../styles/colors'
+// import CustomTween from '../components/custom-tween'
 // import { propTypes } from 'react-typography/dist/GoogleFont'
 import { Controller, Scene } from 'react-scrollmagic'
-import TweenMax from 'gsap'
+import { Tween } from 'react-gsap'
+import { jsx } from '@emotion/core'
 
 const ExperienceStyle = styled.div`
   padding: 2em;
   min-height: 100vh;
   background-color: ${colors.lightgray};
+  /* display: grid;
+  grid-template-areas: 
+  "title . . ."
+  ". image image image"
+  ". image image image"
+  ". image image image"; */
+`;
+
+const TitleStyle = styled.div`
+  max-height: 100px;
+  max-width: 300px;
+  border: 1px green solid;
+  /* grid-area: title;
+  grid-row: 1/2;
+  grid-column: 1/2; */
+`;
+
+const SequenceStyle = styled.div`
+  border: red 1px dotted;
+ 
+  /* grid-area: image;
+  grid-row: 2/5;
+  grid-column: 2/5; */
 `;
 
 class Experience extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-                  obj: {curImg: 0},
-                  images: this.props.sequence,
-                  main: this.props.sequence[0]
-                  }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     myTween: null,
+  //     currentImg: null,
+  //     counter: 0,
+  //   }
+  // }
 
-  componentDidMount() {
-    // TweenMax can tween any property of any object. We use this object to cycle through the array
-    // const obj = {curImg: 0};
-    // const images = this.state.images;
-
-    // create tween
-    // const tween = TweenMax.to(obj, 3 ,
-    //   {
-    //     curImg: images.length - 1,	// animate propery curImg to number of images
-    //     roundProps: "curImg",				// only integers so it can be used as an array index
-    //     repeat: 0,									// repeat 3 times
-    //     immediateRender: true,			// load first image automatically
-    //     ease: Linear.easeNone,			// show every image the same ammount of time
-    //     onUpdate:  () =>  {
-    //       this.setState({ main:  images[obj.curImg] })
-    //     }
-    //   }
-    // );
-
-    // new ScrollMagic.Scene({
-    //   triggerElement: "#imagesequence",
-    //   duration: 1000, // scroll distance
-    //   offset: 100,
-    //   reverse: true
-    // })
-      // .setTween(tween)
-    //   .addIndicators({
-    //     colorStart: "green",
-    //     colorEnd: "green",
-    //     colorTrigger: "blue"
-    //   })
-    //   .addTo(this.controller); // assign the scene to the controller
-  }
-
-    render() {
-      // const obj = {curImg: 0};
-      // const images = this.state.images;
-  
-      const tween = TweenMax.to(this.state.obj, 3 ,
-        {
-          curImg: this.state.images.length - 1,	// animate propery curImg to number of images
-          roundProps: "curImg",				// only integers so it can be used as an array index
-          repeat: 0,									// repeat 3 times
-          immediateRender: true,			// load first image automatically
-          ease: Linear.easeNone,			// show every image the same ammount of time
-        }
-      );
-
+  render() {
+    const images= this.props.sequence
+    const obj =  {nominal: 0}
+    const NonStretchedImage = props => {
+      let normalizedProps = props
+      if (props.fluid) {
+          normalizedProps = {
+          ...props,
+          style: {
+              ...(props.style || {}),
+              maxWidth: 350,
+              margin: "0 auto", // Used to center the image
+          },
+          }
+      }
+      return <Img {...normalizedProps} />
+    }
+   
     return (
     <ExperienceStyle id="experience"> 
-      <h1>Experience</h1>
-      <Controller>
-      <Scene triggerHook="onEnter" duration="300%" tween={tween}>
-          <Img fluid={this.state.main.fluid}/>
-      </Scene>
-    </Controller>
-   
-   
-   
-   
-   
-   
-   
-          
-   
-      {/* <div id="imagesequence" >  
-        
-      </div> */}
+      <TitleStyle> 
+        <h1>Experience</h1>
+      </TitleStyle>   
+      <SequenceStyle>
+        <Controller>
+          <Scene triggerHook="onEnter" duration="1000" offset="700" pin>
+            <Tween
+              duration={1}
+              ease="Linear.easeNone"
+              from={ nominal: 0}
+              to= { nominal: `${images.length}` - 1}
+              roundProps= {"nominal"}
+              onUpdate={
+                {console.log(obj)}
+              }
+            >
+              
+            </Tween>
+          </Scene>
+        </Controller>
+      </SequenceStyle>
     </ExperienceStyle > 
       )
     }
