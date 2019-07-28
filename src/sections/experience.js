@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
+import Img from 'gatsby-image'
 import colors from '../styles/colors'
 // import CustomTween from '../components/custom-tween'
 // import { propTypes } from 'react-typography/dist/GoogleFont'
+
 import { Controller, Scene } from 'react-scrollmagic'
 import { Tween } from 'react-gsap'
 import { jsx } from '@emotion/core'
@@ -36,60 +38,50 @@ const SequenceStyle = styled.div`
   grid-column: 2/5; */
 `;
 
-class Experience extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     myTween: null,
-  //     currentImg: null,
-  //     counter: 0,
-  //   }
-  // }
-
-  render() {
-    const images= this.props.sequence
-    const obj =  {nominal: 0}
-    const NonStretchedImage = props => {
-      let normalizedProps = props
-      if (props.fluid) {
-          normalizedProps = {
-          ...props,
-          style: {
-              ...(props.style || {}),
-              maxWidth: 350,
-              margin: "0 auto", // Used to center the image
-          },
-          }
-      }
-      return <Img {...normalizedProps} />
+const Experience = (props) => {
+  const images = props.sequence
+  const [count, setCount] = useState(0)
+  
+  const NonStretchedImage = props => {
+    let normalizedProps = props
+    if (props.fluid) {
+        normalizedProps = {
+        ...props,
+        style: {
+            ...(props.style || {}),
+            maxWidth: 350,
+            margin: "0 auto", // Used to center the image
+        },
+        }
     }
-   
-    return (
+    return <Img {...normalizedProps} />
+  }
+
+  return (
     <ExperienceStyle id="experience"> 
       <TitleStyle> 
         <h1>Experience</h1>
       </TitleStyle>   
       <SequenceStyle>
         <Controller>
-          <Scene triggerHook="onEnter" duration="1000" offset="700" pin>
+          <Scene triggerHook="onEnter" duration="1000" offset="700" reverse="true" pin>
             <Tween
-              duration={1}
-              ease="Linear.easeNone"
-              from={ nominal: 0}
-              to= { nominal: `${images.length}` - 1}
-              roundProps= {"nominal"}
-              onUpdate={
-                {console.log(obj)}
-              }
+              target = { {count} }
+              duration={0.5}
+              roundProps = { "count"}
+              count = { `${images.length}` - 1 }
+              immediateRender = {true}
+              ease={"Linear.easeNone"}
+              // playState={state === 'entering' ? Tween.playState.reverse : state === 'exiting' ? Tween.playState.play : null}
+             
             >
-              
+              <NonStretchedImage fluid={images[count].fluid} />
             </Tween>
           </Scene>
         </Controller>
       </SequenceStyle>
     </ExperienceStyle > 
-      )
-    }
-  }
+  )  
+}
 
   export default Experience

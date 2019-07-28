@@ -58,7 +58,7 @@ export const pageQuery = graphql`
           dribbble
           twitter
           images{
-            fluid(maxWidth: 500){
+            fluid(maxWidth: 400){
               ...GatsbyContentfulFluid
             }
           }
